@@ -128,7 +128,10 @@
                         // beforeSend: function(ct, ci) { /* called first within default beforeSend callback */ },
                         dataType: 'html'
       },
-      debug: false
+      debug: false,
+      
+      // if true, clueTip will use rel content like WebService for showing picture
+      WebService: false
 
     }
   };
@@ -347,8 +350,11 @@
 * load external file via ajax
 ***************************************/
 
-      else if ( !opts.local && tipAttribute.indexOf('#') !== 0 ) {
-        if (/\.(jpe?g|tiff?|gif|png)(?:\?.*)?$/i.test(tipAttribute)) {
+      else
+  	    if ( !opts.local && tipAttribute.indexOf('#') !== 0 || opts.WebService) {
+          
+        if (/\.(jpe?g|tiff?|gif|png)(?:\?.*)?$/i.test(tipAttribute) || opts.WebService ) {
+        
           $cluetipInner.html('<img src="' + tipAttribute + '" alt="' + tipTitle + '" />');
           cluetipShow(pY);
         } else {
