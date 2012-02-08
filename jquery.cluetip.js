@@ -221,7 +221,7 @@
           defHeight = isNaN(parseInt(opts.height, 10)) ? 'auto' : (/\D/g).test(opts.height) ? opts.height : opts.height + 'px';
       var sTop, linkTop, posY, tipY, mouseY, baseline;
       // horizontal measurement variables
-      var tipInnerWidth = parseInt(opts.width, 10) || 275,
+      var tipInnerWidth = isNaN(parseInt(opts.width, 10)) ? 'auto' : (/\D/g).test(opts.width) ? opts.width : opts.width + 'px',
           tipWidth = tipInnerWidth + cluetipPadding + opts.dropShadowSteps,
           linkWidth = this.offsetWidth,
           linkLeft, posX, tipX, mouseX, winWidth;
